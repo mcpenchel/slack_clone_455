@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>#<%= @chatroom.name %></h1>
+  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <% @chatroom.messages.each do |message| %>
+      <%= render 'messages/message', message: message %>
+    <% end %>
+  </div>
+
+  <%= simple_form_for [@chatroom, @message] do |f| %>
+    <%= f.input :content, as: :text %>
+    <%= f.submit "Enviar mensagem", class: 'btn btn-primary' %>
+  <% end %>
+
+</div>
